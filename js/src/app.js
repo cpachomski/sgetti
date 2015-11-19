@@ -16,6 +16,13 @@ var Graph = React.createClass({
 
 	loadRawData: function(){
 		d3.csv(this.props.url)
+			.row(function(d){
+				return{
+					country: d.country,
+					kg_capita: Number(d['kg/capita']),
+					tons_produced: Number(d['tons produced'])
+				}
+			})
 			.get(function(err, rows){
 				if(err){
 					console.error(err);
