@@ -27,6 +27,7 @@
     "lodash": "^3.10.1",
     "node-bourbon": "^4.2.3",
     "react": "^0.14.0",
+    "react-dom": "^0.14.3",
     "reactify": "^1.1.1"
   }
 }
