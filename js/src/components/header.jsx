@@ -7,18 +7,24 @@ var Header = React.createClass({
         <div id='logo'>
           <h1>Sgetti</h1>
         </div>
-        <headerNavMenu />
+        <HeaderNav />
       </div>
     )
   }
 });
 
 
+var HeaderNav = React.createClass({
+  render: function() {
+    return(
+      <div className='nav-container'>
+          <ul className='nav'>
 
-
-
-
-
+          </ul>
+      </div>
+    )
+  }
+});
 
 
 
