@@ -1,0 +1,21 @@
+header{
+
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 5;
+  height: 100px;
+  background-color: $blue;
+
+  #header-container{
+    @include wrapper;
+    padding: 0px 50px;
+    #logo{
+      h1{
+        color: $yellow;
+      }
+    }
+  }
+
+
+}
