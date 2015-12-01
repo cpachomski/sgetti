@@ -7,12 +7,30 @@ var React = require('react'),
 
 
 
-var App = React.createClass({
-	render: function(){
 
+
+
+var App = React.createClass({
+	componentDidMount: function(){
+		this.getUserLocation();
+	},
+
+	getUserLocation: function(){
+		if (navigator.geolocation){
+			navigator.geolocation.getCurrentPosition(this.showUserLocation);
+		} else {
+			console.log('CANNOT ')
+		}
+	},
+	showUserLocation: function(position){
+		
+		var location = {lat: position.coords.latitude, lng: position.coords.longitude}
+		console.log(location)	
+	},
+	render: function(){
 		return(
 			<div className='app-container'>
-
+				
 			</div>
 		)
 	}
