@@ -1,9 +1,10 @@
 var express = require('express');
+var ejs = require('ejs');
 var app = express();
 
 var port = process.env.PORT || 8080;
 
-app.engine('html', require('ejs').renderFile);
+app.engine('html', ejs.renderFile);
 app.set('views', __dirname);
 
 app.use(express.static(__dirname + '/'));

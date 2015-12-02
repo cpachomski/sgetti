@@ -1,12 +1,10 @@
 require.config({
-
-    baseUrl: 'js/app',
-
+    baseUrl: '/js/app',
     paths: {
-        "jQuery": "../lib/jquery.min",
+        "jquery": "../lib/jquery.min",
         "underscore": "../lib/underscore.min",
-        "text": "../lib/text",
         "backbone": "../lib/backbone.min",
+        "text": "../lib/text",
     },
 
     shim: {
@@ -14,7 +12,7 @@ require.config({
           exports: "_"
         },
         backbone: {
-            deps: ['jQuery', 'underscore'],
+            deps: ['jquery', 'underscore'],
             exports: 'backbone'
         }
     },
@@ -22,11 +20,23 @@ require.config({
     waitSeconds: 0
 });
 
+
+
+'use strict';
+
 require([
-  'jQuery',
+  'jquery',
   'underscore',
   'backbone',
   'text',
 ], function(){
-    require(['app'], function(){})
-})
+
+    
+
+
+    require(['app'], function(require){
+
+    });
+
+
+});

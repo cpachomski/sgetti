@@ -1,5 +1,5 @@
-define[
-  'jQuery',
+define([
+  'jquery',
   'underscore',
   'backbone',
   'views/pageload',
@@ -12,14 +12,16 @@ define[
 
 
 
-$( document ).ready(function(){
 
-  var plv = new PageLoadView();
-  var sv = new SearchView();
+$(document).ready(function(){
+
+	console.log('app.js hit')
+  	var plv = new PageLoadView();
+  	var sv = new SearchView();
 
 });
 
-};
+});
 
 
 
