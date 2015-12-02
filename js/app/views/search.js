@@ -1,14 +1,16 @@
 define([
   'jquery',
   'underscore',
-  'backbone'
-], function($, _, Backbone ){
+  'backbone',
+  'text!templates/search.html'
+], function($, _, Backbone, SearchTemplate ){
 
 'use strict';
 
 
 var SearchView = Backbone.View.extend({
     initialize: function(opts){
+    	
         console.log('initialized SearchView');
     }
 });
