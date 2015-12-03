@@ -40,23 +40,28 @@ var MapView = Backbone.View.extend({
 
 			navigator.geolocation.getCurrentPosition(function(position){
 				var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
+				this.getSgettiLocations(position.coords.latitude, position.coords.longitude);
 				this.map.setCenter(geolocate);
 
 			}.bind(this));
 
 		
-
-			
-
-
-
 		} else{
 			$('#map').text('no geolocation so no sgetti');
 		}
 
-		console.log(this.duck);
+
 	},
+
+	getSgettiLocations: function(lat,lng){
+		var sgettiRoute = 'http://api.v3.factual.com/t/restaurants-us?filters={"$and":[{"cuisine":{"$includes":"italian"}}]}&geo={"$circle":{"$center":['+lat+','+lng+'],"$meters":5000}}&KEY=XT3lQasien4oEqKnwuLRWDGwH1VvYyGtbTFbCHQh';
+
+		$.get(sgettiRoute, function(data){
+			data = JSON.stringify(data);
+			$('#data').text(data);
+		})
+
+	}
 
 });
 
