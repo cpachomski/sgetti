@@ -11,6 +11,7 @@ var MapView = Backbone.View.extend({
 	initialize: function(opts){
 		this.opts = opts || {}; 
 		var self = this;
+
 		this.setupMap();
 		this.setGeolocation();
 		
@@ -40,6 +41,7 @@ var MapView = Backbone.View.extend({
 
 			navigator.geolocation.getCurrentPosition(function(position){
 				var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
 				this.getSgettiLocations(position.coords.latitude, position.coords.longitude);
 				this.map.setCenter(geolocate);
 
@@ -59,10 +61,12 @@ var MapView = Backbone.View.extend({
 		$.get(sgettiRoute, function(d){
 
 			this.locations = d.response.data;
-	
-		}.bind(this));
+		}.bind(this)).done(function(){
+			$('#find-sgetti').removeClass('loading');
+		});
 
-	}
+	},
+
 
 });
 

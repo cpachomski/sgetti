@@ -14,7 +14,13 @@ $(document).ready(function(){
 	var sv = new ShareView({el: $('#share-icon')});
 
 	$('#find-sgetti').on('click', function(){
-	  	var gmap = new GMapView();
+		$('#find-sgetti').addClass('loading');
+
+		//delay load to show loading animation
+		
+		setTimeout(function(){
+	  		var gmap = new GMapView();
+		}, 2000);
 	});
 
 });
