@@ -2,34 +2,20 @@ define([
   'jquery',
   'underscore',
   'backbone',
+  'views/share',
   'views/gmap',
   'text!templates/search.html'
-], function( $, _, Backbone, GMapView, SearchTemplate ){
+], function( $, _, Backbone, ShareView, GMapView, SearchTemplate ){
 
 "use strict";
 
-
-
-
-	
-
-
 $(document).ready(function(){
 
-	console.log('app.js hit')
-
+	var sv = new ShareView({el: $('#share-icon')});
 
 	$('#find-sgetti').on('click', function(){
-		
-		
 	  	var gmap = new GMapView();
-
 	});
-
-
-
-
-
 
 });
 
