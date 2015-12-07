@@ -4,7 +4,8 @@ define([
   'backbone',
   'text!templates/result-details.html',
   'text!templates/result-tab.html',
-], function($, _, Backbone, ResultDetailTemplate, ResultTabTemplate ){
+  'views/slider'
+], function($, _, Backbone, ResultDetailTemplate, ResultTabTemplate, SliderView ){
 
 'use strict';
 
@@ -16,6 +17,7 @@ var MapView = Backbone.View.extend({
 
 		this.setupMap();
 		this.setGeolocation();
+		this.tabWidth = $('.current-result-display').width();
 		
 	},
 	setupMap: function(){
@@ -33,7 +35,8 @@ var MapView = Backbone.View.extend({
 		
 
 		if(navigator.geolocation){
-			console.log('buildMap()')
+
+
 
 			var mapOptions = {
 				zoom: 15,
@@ -59,25 +62,37 @@ var MapView = Backbone.View.extend({
 
 	getSgettiLocations: function(lat,lng){
 		var sgettiRoute = 'http://api.v3.factual.com/t/restaurants-us?filters={"$and":[{"cuisine":{"$includes":"italian"}}]}&geo={"$circle":{"$center":['+lat+','+lng+'],"$meters":5000}}&KEY=XT3lQasien4oEqKnwuLRWDGwH1VvYyGtbTFbCHQh';
-
+		var that = this;
 		$.get(sgettiRoute, function(d){
 
 			this.locations = d.response.data;
 			this.currentLocation = d.response.data[0];
-
+			this.currentLocation.active = true;
+			
+			var containerWidth = that.tabWidth * d.response.data.length;
+			$('.results').css('width', containerWidth);
 			_.each(this.locations, function(location){
-	
 				var resultTab = _.template(ResultTabTemplate, {variable: 'data'})({'location': location});
-				$('.results-slider').append(resultTab);
-
+				$('.results').append(resultTab);
 			});			
 
 
 		}.bind(this)).done(function(){
+
 			$('#find-sgetti').toggle();
+			
+			_.each($('.result-tab'), function(result){
+				$(result).css('width', that.tabWidth);
+				console.log(result);
+			});
+			$('.right').removeClass('hidden');
+			var SV = new SliderView({ el: $('.results')});
+
 		});
 
 	},
+
+
 
 
 });

@@ -1,16 +1,80 @@
 #results-section{
 	width: 80%;
-	height: 400px;
+	height: 500px;
 	margin: 0 auto;
-	margin-top: 50px;
+	margin-top: 75px;
 	padding: 0px;
-	border: 5px solid black;
+	border: 6px solid black;
+	@include clearfix;
+	position: relative;
+	i:hover{
+		cursor: pointer;
+		&.hidden{
+			display: none;
+		}
+	}
+	i.left{
+		position: absolute;
+		left: -50px;
+		bottom: 39px;
+		font-size: 25px;
+	}
+	i.right{
+		position: absolute;
+		right: -50px;
+		bottom: 39px;
+		font-size: 25px;
+	}
 	#map{
-		width: 60%;
-		height: 100%;
-		display: inline-block;
-		border-right: 5px solid black;
+		width: calc(75%);
+		height: 80%;
+		border-right: 6px solid black;
+		float:left;
 	}
 
+	.current-result-display{
+		float:left;
+		width: calc(25% - 6px);
+		height: 80%;
+	}
 
+	.results-slider{
+
+		border-top: none;
+		height: 20%;
+		width: 100%;
+		float:left;
+		border-top: 6px solid black;
+		width: 100%;
+		overflow: hidden;
+		border-sizing: border-box;
+		position: relative;
+
+		.results{
+			position: relative;
+			height: 100%;
+			overflow:hidden;
+			@include transition(all 0.3s ease-in);
+		}
+		.result-tab{
+			height: 100%;
+			display: inline-block;
+			float:left;
+			position: relative;
+			border-right: 6px solid black;
+			text-align: center;
+			&.active{
+				background-color: black;
+				color:white;
+				font-size: 18px;
+				border-right: none;
+			}
+			span{
+				position: absolute;
+				bottom: 25px;
+				left: 50%;
+				@include transform(translateX(-50%));
+			}
+		}
+	}
 }
