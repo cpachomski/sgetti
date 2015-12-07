@@ -27,19 +27,26 @@ var SliderView = Backbone.View.extend({
 	},
 
 	next: function(){
-
+		var that = this;
 		console.log('next')
 		var $next = $(this.$active.next());
 		this.$active.removeClass('active');
 		$next.addClass('active');
 		this.$active = $next;
-		this.offset += this.$active.width() + 6;
-		this.$el.css("right", this.offset ).bind(this);
+		that.offset += this.$active.width() + 5;
+
+		this.$el.css("right", that.offset );
 
 
 		if( this.$active.prev()){
-			console.log('this is the first')
+			console.log('this is not the first')
+
 		}
+
+		var moreRight = this.$active.next().next().next().next().next().hasClass('result-tab')
+		var moreLeft = this.$active.prev().hasClass('result-tab');
+
+
 	
 	},
 
