@@ -1,8 +1,10 @@
 define([
   'jquery',
   'underscore',
-  'backbone'
-], function($, _, Backbone ){
+  'backbone',
+  'text!templates/result-details.html',
+  'text!templates/result-tab.html',
+], function($, _, Backbone, ResultDetailTemplate, ResultTabTemplate ){
 
 'use strict';
 
@@ -61,8 +63,18 @@ var MapView = Backbone.View.extend({
 		$.get(sgettiRoute, function(d){
 
 			this.locations = d.response.data;
+			this.currentLocation = d.response.data[0];
+
+			_.each(this.locations, function(location){
+	
+				var resultTab = _.template(ResultTabTemplate, {variable: 'data'})({'location': location});
+				$('.results-slider').append(resultTab);
+
+			});			
+
+
 		}.bind(this)).done(function(){
-			$('#find-sgetti').removeClass('loading');
+			$('#find-sgetti').toggle();
 		});
 
 	},

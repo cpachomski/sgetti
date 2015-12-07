@@ -15,5 +15,5 @@ app.get('*', function( request, response ){
 
 
 app.listen(port, function(){
-  console.log('Now running on port ' + port + '...');
+  console.log('now serving sgetti up on ' + port + '...');
 });

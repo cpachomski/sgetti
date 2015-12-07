@@ -10,13 +10,13 @@
 <body>
 
 
-<style type="text/css">
-	#map{
-		width: 1000px; height: 700px;
-	}
-</style>
 
-<span id='share-icon'><i class="icon-reorder"></i></span>
+
+<span id='share-icon'>
+	<span class='green'></span>
+	<span class='white'></span>
+	<span class='red'></span>
+</span>
 
 <div id='share-section'>
 	<div>
@@ -30,19 +30,26 @@
 	</div>
 </div>
 <div id='main-section'>
-	
+	<div class='wrapper'>
 
-	<div id='title'>
-		<h1>Sgetti</h1>
-		<h2>A Modern Italian restaurant finder.</h2>
-	</div>
-	<div id='results-section'>
-		<p id="data"></p>
-		<div id='map'></div>
-	</div>
+		<div id='title'>
+			<h1>Sgetti</h1>
+			<h2>A Modern Italian restaurant finder.</h2>
+		</div>
+		<div id='results-section'>
+			<div id='map'></div>
+			<div class='current-result-display'>
+				
+			</div>
+			<div class='results-slider'>
+				
+			</div>
+		</div>
 
-	<div id='button-container'>
-			<button id='find-sgetti'> Find Sgetti</button>
+		<div id='button-container'>
+				<button id='find-sgetti'> Find Sgetti</button>
+		</div>
+		
 	</div>
 
 </div>
