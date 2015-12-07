@@ -1,12 +1,56 @@
 
-
-
-
 #share-icon{
 	position: fixed;
-	left: 50px; top: 50px;
+	right: 5%; top: 50px;
+	width: 150px;
+	&:before{
+		content: 'Share Sgetti';
+		font-size: 20px;
+		position: absolute;
+		top: 19px;
+		width: 200px;
+		left: 50%;
+		@include transform(translateX(-50%));
+		@include transition(all 0.2s ease-in-out);
+		@include transition-delay(5s);
+		color: black;
+	}
 	z-index: 4;
 	display: block;
+	@include transition(all 0.5s ease-in-out);
+	&.active{
+		width: 40px;
+		&:before{
+			content: '';
+		}
+		.green, .white, .red{
+			height: 10px;
+		}
+		@include transform(rotate(-90deg));
+		.green{
+			margin-bottom: 5px;
+
+			background-color: green;
+		}
+		.white{
+			margin-bottom: 5px;
+			background-color: white
+			
+		}
+		.red{
+			background-color: red;	
+		}
+		
+	}
+	.green, .white, .red{
+		@include transition(all 0.5s ease-in-out);
+		display: block;
+		width: 100%;
+		height: 20px;
+		background: white;
+		border-radius: 2px;
+
+	}
 	&:hover{
 		cursor: pointer;
 	}
@@ -21,7 +65,7 @@
 	position: absolute;
 	height: 100%;
 	width: 100%;
-	background-color: gray;
+	background-color: black;
 	z-index: 1;
 	color: white;
 
@@ -30,7 +74,7 @@
 
 		h3{
 			text-align: center;
-			color: black;
+			color: white;
 		}
 		ul{
 			li{
