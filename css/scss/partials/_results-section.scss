@@ -26,14 +26,14 @@
 		font-size: 25px;
 	}
 	#map{
-		width: calc(75%);
+		width: calc(75% + 0px);
 		height: 80%;
-		border-right: 6px solid black;
-		float:left;
+		border-left: 6px solid black;
+		float:right;
 	}
 
 	.current-result-display{
-		float:left;
+		float:right;
 		width: calc(25% - 6px);
 		height: 80%;
 	}
@@ -63,6 +63,7 @@
 			display: inline-block;
 			float:left;
 			position: relative;
+			padding-right: 6px;
 			border-right: 6px solid black;
 			text-align: center;
 			&.active{

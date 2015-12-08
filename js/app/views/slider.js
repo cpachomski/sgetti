@@ -32,7 +32,7 @@ var SliderView = Backbone.View.extend({
 		console.log(this.$active);
 		var that = this;
 		var $next = $(this.$active.next());
-		that.offset += this.$active.width() + 5;
+		that.offset += this.$active.width() + 11;
 		this.$active.removeClass('active');
 		this.$active = $next;
 		$next.addClass('active');
@@ -43,7 +43,17 @@ var SliderView = Backbone.View.extend({
 		}
 
 		var moreRight = this.$active.next().next().next().next().next().hasClass('result-tab')
+
+		if( !moreRight ){
+			$('.right').hide();
+		}
 		var moreLeft = this.$active.prev().hasClass('result-tab');
+		console.log(moreLeft);
+		if(moreLeft){
+			$('.left').removeClass('hidden');
+		} else{
+			$('.left').addClass('hidden');
+		}
 
 
 	
