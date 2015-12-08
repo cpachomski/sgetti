@@ -20,7 +20,7 @@ $(document).ready(function(){
 		
 		setTimeout(function(){
 	  		var gmap = new GMapView();
-		}, 2000);
+		}, 1);
 	});
 
 });

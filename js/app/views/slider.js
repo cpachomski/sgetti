@@ -14,33 +14,32 @@ var SliderView = Backbone.View.extend({
 		//bind slider functionality to control arrows
 		$('.left').on('click', function(){
 			this.prev();
+			
 		}.bind(this));
 		$('.right').on('click', function(){
 			this.next();
+			console.log('right')
 		}.bind(this));
 
 		this.$el = $(this.el);
-		console.log(this.$el);
 		this.$active = $('.result-tab.active');
+
 		this.offset = 0;
 
 	},
 
 	next: function(){
+		console.log(this.$active);
 		var that = this;
-		console.log('next')
 		var $next = $(this.$active.next());
-		this.$active.removeClass('active');
-		$next.addClass('active');
-		this.$active = $next;
 		that.offset += this.$active.width() + 5;
+		this.$active.removeClass('active');
+		this.$active = $next;
+		$next.addClass('active');
 
 		this.$el.css("right", that.offset );
-
-
-		if( this.$active.prev()){
+		if( this.$active.prev().length > 1){
 			console.log('this is not the first')
-
 		}
 
 		var moreRight = this.$active.next().next().next().next().next().hasClass('result-tab')

@@ -49,11 +49,13 @@
 		overflow: hidden;
 		border-sizing: border-box;
 		position: relative;
+		@include transition(all 0.3s ease-in);
 
 		.results{
 			position: relative;
 			height: 100%;
 			overflow:hidden;
+			right: 0px;
 			@include transition(all 0.3s ease-in);
 		}
 		.result-tab{
