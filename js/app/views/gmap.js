@@ -86,7 +86,6 @@ var MapView = Backbone.View.extend({
 			
 			_.each($('.result-tab'), function(result){
 				$(result).css('width', that.tabWidth);
-				console.log(result);
 			});
 			$('.right').removeClass('hidden');
 			var SV = new SliderView({ el: $('.results')});

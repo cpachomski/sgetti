@@ -23,13 +23,14 @@ var SliderView = Backbone.View.extend({
 
 		this.$el = $(this.el);
 		this.$active = $('.result-tab.active');
-
+		this.slidesCount = $('.result-tab').length;
 		this.offset = 0;
+
 
 	},
 
 	next: function(){
-		console.log(this.$active);
+
 		var that = this;
 		var $next = $(this.$active.next());
 		that.offset += this.$active.width() + 11;
@@ -38,30 +39,34 @@ var SliderView = Backbone.View.extend({
 		$next.addClass('active');
 
 		this.$el.css("right", that.offset );
-		if( this.$active.prev().length > 1){
-			console.log('this is not the first')
-		}
+		
 
-		var moreRight = this.$active.next().next().next().next().next().hasClass('result-tab')
-
-		if( !moreRight ){
-			$('.right').hide();
-		}
-		var moreLeft = this.$active.prev().hasClass('result-tab');
-		console.log(moreLeft);
-		if(moreLeft){
-			$('.left').removeClass('hidden');
-		} else{
-			$('.left').addClass('hidden');
-		}
-
-
-	
+		this.arrowCheck(this.$active);
 	},
 
 	prev: function(){
-		console.log('prev')
+		
 	},
+	goTo: function(idx, activeEl){
+		this.$active.removeClass('active');
+		var $next = $(this.$active.next()),
+
+
+
+	},
+	arrowCheck: function(activeEl){
+		var moreRight = activeEl.next().next().next().next().hasClass('result-tab'),
+			moreLeft = activeEl.prev().hasClass('result-tab');
+
+		if(!moreRight){
+			$('.right').hide();
+		}
+		if(moreLeft){
+			$('.left').removeClass('hidden');
+		} else {
+			$('.left').addClass('hidden');
+		}
+	}
 
 });
 
