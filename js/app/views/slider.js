@@ -30,36 +30,41 @@ var SliderView = Backbone.View.extend({
 	},
 
 	next: function(){
+		
+		this.offset += this.$active.width() + 11;
 
-		var that = this;
-		var $next = $(this.$active.next());
-		that.offset += this.$active.width() + 11;
-		this.$active.removeClass('active');
-		this.$active = $next;
-		$next.addClass('active');
-
-		this.$el.css("right", that.offset );
+		this.goTo(this.offset, this.$active.next());
 		
 
 		this.arrowCheck(this.$active);
 	},
 
 	prev: function(){
+		this.offset -= this.$active.width() + 11;
+		
+		this.goTo(this.offset, this.$active.prev());	
+
+		this.arrowCheck(this.$active);
 		
 	},
-	goTo: function(idx, activeEl){
+	goTo: function(offset, nextActive){
+		var $next = nextActive;
 		this.$active.removeClass('active');
-		var $next = $(this.$active.next()),
+		this.$active = $next;
+		this.$el.css("right", offset);
+		$next.addClass('active');
 
-
+		this.arrowCheck(this.$active);
 
 	},
 	arrowCheck: function(activeEl){
-		var moreRight = activeEl.next().next().next().next().hasClass('result-tab'),
+		var moreRight = activeEl.next().next().next().next().next().hasClass('result-tab'),
 			moreLeft = activeEl.prev().hasClass('result-tab');
 
 		if(!moreRight){
 			$('.right').hide();
+		}else{
+			$('.right').show();
 		}
 		if(moreLeft){
 			$('.left').removeClass('hidden');
