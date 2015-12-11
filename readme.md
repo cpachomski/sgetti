@@ -3,14 +3,14 @@
 
 
 
-##FrontEnd
-*gulp yo
-*require.js swag
-*Backbone them views tho
-*Underscore.js needed tho
-*jQuery duh tho that tho
+##Front
+gulp yo
+require.js swag
+Backbone them views tho
+Underscore.js needed tho
+jQuery duh tho that tho
 
-##Backend
-*node yeh
-*express itsa nice
-*ejs render so fine
+##Back
+node yeh
+express itsa nice
+ejs render so fine

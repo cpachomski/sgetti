@@ -78,7 +78,7 @@ var MapView = Backbone.View.extend({
 				var resultTab = _.template(ResultTabTemplate, {variable: 'data'})({'location': location});
 				var resultDetails = _.template(ResultDetailsTemplate, {variable: 'data'})({'location': location});
 				$('.results').append(resultTab);
-				$('.current-result-display').append(resultDetails);
+				$('.result-details-slider').append(resultDetails);
 			});			
 
 
