@@ -2,7 +2,7 @@
 	width: 80%;
 	height: 500px;
 	margin: 0 auto;
-	margin-top: 75px;
+	margin-top: 25px;
 	padding: 0px;
 	border: 6px solid black;
 	@include clearfix;
@@ -36,6 +36,18 @@
 		float:right;
 		width: calc(25% - 6px);
 		height: 80%;
+		@include clearfix;
+		.result-details{
+			height: 100%;
+			width: 100%;
+			float:left;
+			.result{
+				display: block;
+				&.name{
+					font-size: 20px;
+				}
+			}
+		}
 	}
 
 	.results-slider{
@@ -63,6 +75,7 @@
 			display: inline-block;
 			float:left;
 			position: relative;
+
 			padding-right: 6px;
 			border-right: 6px solid black;
 			text-align: center;

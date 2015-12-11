@@ -11,6 +11,7 @@ var SliderView = Backbone.View.extend({
 	initialize: function(opts){
 		this.opts = opts || {};
 
+		console.log(opts);
 		//bind slider functionality to control arrows
 		$('.left').on('click', function(){
 			this.prev();
@@ -23,6 +24,17 @@ var SliderView = Backbone.View.extend({
 
 		this.$el = $(this.el);
 		this.$active = $('.result-tab.active');
+		this.firstLocation = this.opts.locations[0];
+
+		//THINGS I WANT
+			// NAME
+			// HOURS -> OPEN
+			//ADDRESS
+			//PRICE
+			//RATING
+
+			console.log('within slider view', this.firstLocation);
+		this.buildLocationInfo(this.opts.locations);
 		this.slidesCount = $('.result-tab').length;
 		this.offset = 0;
 
@@ -31,7 +43,7 @@ var SliderView = Backbone.View.extend({
 
 	next: function(){
 		
-		this.offset += this.$active.width() + 11;
+		this.offset += this.$active.width() + 12;
 
 		this.goTo(this.offset, this.$active.next());
 		
@@ -40,7 +52,7 @@ var SliderView = Backbone.View.extend({
 	},
 
 	prev: function(){
-		this.offset -= this.$active.width() + 11;
+		this.offset -= this.$active.width() + 12;
 		
 		this.goTo(this.offset, this.$active.prev());	
 
@@ -60,7 +72,7 @@ var SliderView = Backbone.View.extend({
 	arrowCheck: function(activeEl){
 		var moreRight = activeEl.next().next().next().next().next().hasClass('result-tab'),
 			moreLeft = activeEl.prev().hasClass('result-tab');
-
+		console.log(moreRight);
 		if(!moreRight){
 			$('.right').hide();
 		}else{
@@ -71,7 +83,12 @@ var SliderView = Backbone.View.extend({
 		} else {
 			$('.left').addClass('hidden');
 		}
+	},
+	buildLocationInfo: function(locations){
+
 	}
+
+
 
 });
 
