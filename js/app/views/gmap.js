@@ -12,13 +12,13 @@ define([
 
 var MapView = Backbone.View.extend({
 	initialize: function(opts){
-		this.opts = opts || {}; 
+		this.opts = opts || {};
 		var self = this;
 
 		this.setupMap();
 		this.setGeolocation();
 		this.tabWidth = $('.current-result-display').width();
-		
+
 	},
 	setupMap: function(){
 
@@ -32,14 +32,12 @@ var MapView = Backbone.View.extend({
 
 	setGeolocation: function(){
 
-		
-
 		if(navigator.geolocation){
 			var mapOptions = {
 				zoom: 15,
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 			};
-			
+
 			navigator.geolocation.getCurrentPosition(function(position){
 				var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
@@ -53,9 +51,21 @@ var MapView = Backbone.View.extend({
 		}
 	},
 
+	placeMarkers: function(location){
+		var locationCoords = {lat: location.latitude, lng: location.longitude};
+		var marker = new google.maps.Marker({
+					position: locationCoords,
+					map: this.map,
+					title: '' + location.name
+		});
+	},
+
+	setMapCenter: function(location){
+
+	},
 	getSgettiLocations: function(lat,lng){
 		var sgettiRoute = 'http://api.v3.factual.com/t/restaurants-us?filters={"$and":[{"cuisine":{"$includes":"italian"}}]}&geo={"$circle":{"$center":['+lat+','+lng+'],"$meters":5000}}&KEY=XT3lQasien4oEqKnwuLRWDGwH1VvYyGtbTFbCHQh';
-		// var sgettiRoute = 'l!';	
+		// var sgettiRoute = 'l!';
 		var that = this;
 		$.get(sgettiRoute, function(d){
 
@@ -71,21 +81,27 @@ var MapView = Backbone.View.extend({
 			this.currentLocation = this.locations[0];
 
 			this.currentLocation.active = true;
-			
+
 			var containerWidth = that.tabWidth * that.locations.length;
 			$('.results').css('width', containerWidth);
-			_.each(that.locations, function(location){
+
+			//BUILD TEMPLATE VIEWS
+
+			_.each(this.locations, function(location){
 				var resultTab = _.template(ResultTabTemplate, {variable: 'data'})({'location': location});
 				var resultDetails = _.template(ResultDetailsTemplate, {variable: 'data'})({'location': location});
+
+				//Place Markers
+				this.placeMarkers(location);
+
 				$('.results').append(resultTab);
 				$('.result-details-slider').append(resultDetails);
-			});			
-
+			}.bind(this));
 
 		}.bind(this)).done(function(){
 
 			$('#find-sgetti').toggle();
-			
+
 			_.each($('.result-tab'), function(result){
 				$(result).css('width', that.tabWidth);
 			});
