@@ -69,11 +69,9 @@ var MapView = Backbone.View.extend({
 	getSgettiLocations: function(lat,lng){
 		var sgettiRoute = 'http://api.v3.factual.com/t/restaurants-us?filters={"$and":[{"cuisine":{"$includes":"italian"}}]}&geo={"$circle":{"$center":['+lat+','+lng+'],"$meters":5000}}&KEY=XT3lQasien4oEqKnwuLRWDGwH1VvYyGtbTFbCHQh';
 
-		var sgettiRoute = 'l!';
 		var that = this;
 		$.get(sgettiRoute, function(d){
-
-			if(d){
+			if( d ){
 				this.locations = d.response.data;
 			} else{
 				this.locations = [
