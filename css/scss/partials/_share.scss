@@ -35,12 +35,12 @@
 		.white{
 			margin-bottom: 5px;
 			background-color: white
-			
+
 		}
 		.red{
-			background-color: red;	
+			background-color: red;
 		}
-		
+
 	}
 	.green, .white, .red{
 		@include transition(all 0.5s ease-in-out);
@@ -68,23 +68,90 @@
 	background-color: black;
 	z-index: 1;
 	color: white;
-
 	> div{
-		margin: 0 auto;
-
+		height: 150px;
+		text-align:center;
 		h3{
-			text-align: center;
-			color: white;
+			padding-top: 25px;
+			margin-top: 0px;
 		}
-		ul{
+		.social-networks{
+			@include clearfix;
+			width: 300px;
+			margin: 0 auto;
+			top: 0px;
+			@include transform(translateY(-55px));
+
+			@include transition(all 0.4s ease-out);
+			@include transition-delay(0.5s)
+
+			&.open{
+				@include transform(translateY(0px));
+			}
+
 			li{
+				position: relative;
+				height: 55px;
+				width: 75px;
 				list-style: none;
-				font-size: 30px;
-				margin: 100px;
-				text-align: center;
+				background-color:white;
+				overflow:hidden;
+				@include transition(all 0.3s ease-in)
+				i{
+					@include transition(all 0.3s ease-in);
+					color: black;
+					line-height: 55px;
+					font-size: 25px;
+				}
+
+				&:before, &:after{
+					position: absolute;
+					width: 33%;
+					height: 5px;
+					content: '';
+
+					@include transition(all 0.3s ease-in);
+				}
+				&:before{
+					left: 0px; bottom: 0px;
+					background-color: green;
+					@include transform(translateX(-100%));
+				}
+				&:after{
+					background-color: red;
+					right: 0px; bottom: 0px;
+					@include transform(translateX(100%));
+				}
+				&:hover{
+					background: white;
+					i{
+						color: white;
+						&.fa-facebook{
+							color: #3B5998;
+						}
+						&.fa-twitter{
+							color: #00aced;
+						}
+						&.fa-pinterest-p{
+							color: #cb2027;
+						}
+						&.fa-google-plus{
+							color: #dd4b39;
+						}
+					}
+					&:before, &:after{
+						@include transform(translateY(0%));
+					}
+
+				}
+
+				float:left;
+
+
 			}
 		}
 	}
+
 
 
 	&.active{

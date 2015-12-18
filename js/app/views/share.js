@@ -16,20 +16,19 @@ var ShareView = Backbone.View.extend({
 		console.log(this.$el);
 		this.$mainSection = $('#main-section');
 		this.$shareSection = $('#share-section');
-		
+
 		this.toggleShare();
 
 	},
 
 	toggleShare: function(){
 		this.$el.on('click', function(){
-			 console.log('hit it')
-		
+
 			this.$el.toggleClass('active');
 			this.$shareSection.toggleClass('active');
 			$('#results-section').toggleClass('hidden');
+			$('.social-networks').toggleClass('open');
 			this.$mainSection.toggleClass('active');
-			console.log(this.$mainSection)
 		}.bind(this));
 	},
 
