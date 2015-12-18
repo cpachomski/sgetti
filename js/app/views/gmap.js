@@ -67,103 +67,107 @@ var MapView = Backbone.View.extend({
 
 	},
 	getSgettiLocations: function(lat,lng){
-		// var sgettiRoute = 'http://api.v3.factual.com/t/restaurants-us?filters={"$and":[{"cuisine":{"$includes":"italian"}}]}&geo={"$circle":{"$center":['+lat+','+lng+'],"$meters":5000}}&KEY=XT3lQasien4oEqKnwuLRWDGwH1VvYyGtbTFbCHQh';
+		var sgettiRoute = 'http://api.v3.factual.com/t/restaurants-us?filters={"$and":[{"cuisine":{"$includes":"italian"}}]}&geo={"$circle":{"$center":['+lat+','+lng+'],"$meters":5000}}&KEY=XT3lQasien4oEqKnwuLRWDGwH1VvYyGtbTFbCHQh';
+
 		var sgettiRoute = 'l!';
 		var that = this;
 		$.get(sgettiRoute, function(d){
 
-			// this.locations = d.response.data;
-			this.locations = [
-			{ name: "The Spotted Pig 1",
-			 	address: '123 that rd.',
-			 	hours_display:"1pm - 1am daily",
-			 	price: 3,
-			 	rating: 5,
-			 	factual_id: 1,
-			 	latitude: 11,
-			 	longitude: 15
-			},
-			{ name: "The Spotted Pig 2",
-			 	address: '123 that rd.',
-			 	hours_display:"1pm - 1am daily",
-			 	price: 3,
-			 	rating: 5,
-			 	factual_id: 2,
-			 	latitude: 11,
-			 	longitude: 15
-			},
-			{ name: "The Spotted Pig 3",
-			 	address: '123 that rd.',
-			 	hours_display:"1pm - 1am daily",
-			 	price: 3,
-			 	rating: 5,
-			 	factual_id: 3,
-			 	latitude: 51,
-			 	longitude: 15
-			},
-			{ name: "The Spotted Pig 4",
-			 	address: '123 that rd.',
-			 	hours_display:"1pm - 1am daily",
-			 	price: 3,
-			 	rating: 5,
-			 	factual_id: 4,
-			 	latitude: 11,
-			 	longitude: 14
-			},
-			{ name: "The Spotted Pig 5",
-			 	address: '123 that rd.',
-			 	hours_display:"1pm - 1am daily",
-			 	price: 3,
-			 	rating: 5,
-			 	factual_id: 5,
-			 	latitude: 11,
-			 	longitude: 11
-			},
-			{ name: "The Spotted Pig 6",
-			 	address: '123 that rd.',
-			 	hours_display:"1pm - 1am daily",
-			 	price: 3,
-			 	rating: 5,
-			 	factual_id: 6,
-			 	latitude: 11,
-			 	longitude: 5
-			},
-			{ name: "The Spotted Pig 7",
-			 	address: '123 that rd.',
-			 	hours_display:"1pm - 1am daily",
-			 	price: 3,
-			 	rating: 5,
-			 	factual_id: 7,
-			 	latitude: 11,
-			 	longitude: 0
-			},
-			{ name: "The Spotted Pig 8",
-			 	address: '123 that rd.',
-			 	hours_display:"1pm - 1am daily",
-			 	price: 3,
-			 	rating: 5,
-			 	factual_id: 8,
-			 	latitude: 11,
-			 	longitude: 15
-			},
-			{ name: "The Spotted Pig 9",
-			 	address: '123 that rd.',
-			 	hours_display:"1pm - 1am daily",
-			 	price: 3,
-			 	rating: 5,
-			 	factual_id: 9,
-			 	latitude: 11,
-			 	longitude: 15
-			},
-			{ name: "The Spotted Pig 10",
-			 	address: '123 that rd.',
-			 	hours_display:"1pm - 1am daily",
-			 	price: 3,
-			 	rating: 5,
-			 	factual_id: 10,
-			 	latitude: 11,
-			 	longitude: 15
-			},];
+			if(d){
+				this.locations = d.response.data;
+			} else{
+				this.locations = [
+				{ name: "The Spotted Pig 1",
+				 	address: '123 that rd.',
+				 	hours_display:"1pm - 1am daily",
+				 	price: 3,
+				 	rating: 5,
+				 	factual_id: 1,
+				 	latitude: 11,
+				 	longitude: 15
+				},
+				{ name: "The Spotted Pig 2",
+				 	address: '123 that rd.',
+				 	hours_display:"1pm - 1am daily",
+				 	price: 3,
+				 	rating: 5,
+				 	factual_id: 2,
+				 	latitude: 11,
+				 	longitude: 15
+				},
+				{ name: "The Spotted Pig 3",
+				 	address: '123 that rd.',
+				 	hours_display:"1pm - 1am daily",
+				 	price: 3,
+				 	rating: 5,
+				 	factual_id: 3,
+				 	latitude: 51,
+				 	longitude: 15
+				},
+				{ name: "The Spotted Pig 4",
+				 	address: '123 that rd.',
+				 	hours_display:"1pm - 1am daily",
+				 	price: 3,
+				 	rating: 5,
+				 	factual_id: 4,
+				 	latitude: 11,
+				 	longitude: 14
+				},
+				{ name: "The Spotted Pig 5",
+				 	address: '123 that rd.',
+				 	hours_display:"1pm - 1am daily",
+				 	price: 3,
+				 	rating: 5,
+				 	factual_id: 5,
+				 	latitude: 11,
+				 	longitude: 11
+				},
+				{ name: "The Spotted Pig 6",
+				 	address: '123 that rd.',
+				 	hours_display:"1pm - 1am daily",
+				 	price: 3,
+				 	rating: 5,
+				 	factual_id: 6,
+				 	latitude: 11,
+				 	longitude: 5
+				},
+				{ name: "The Spotted Pig 7",
+				 	address: '123 that rd.',
+				 	hours_display:"1pm - 1am daily",
+				 	price: 3,
+				 	rating: 5,
+				 	factual_id: 7,
+				 	latitude: 11,
+				 	longitude: 0
+				},
+				{ name: "The Spotted Pig 8",
+				 	address: '123 that rd.',
+				 	hours_display:"1pm - 1am daily",
+				 	price: 3,
+				 	rating: 5,
+				 	factual_id: 8,
+				 	latitude: 11,
+				 	longitude: 15
+				},
+				{ name: "The Spotted Pig 9",
+				 	address: '123 that rd.',
+				 	hours_display:"1pm - 1am daily",
+				 	price: 3,
+				 	rating: 5,
+				 	factual_id: 9,
+				 	latitude: 11,
+				 	longitude: 15
+				},
+				{ name: "The Spotted Pig 10",
+				 	address: '123 that rd.',
+				 	hours_display:"1pm - 1am daily",
+				 	price: 3,
+				 	rating: 5,
+				 	factual_id: 10,
+				 	latitude: 11,
+				 	longitude: 15
+				},];
+			}
 
 			this.currentLocation = this.locations[0];
 			this.currentLocation.active = true;
